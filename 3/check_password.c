@@ -18,7 +18,7 @@ int main()
 	if(lnmax == -1)
 		lnmax = 256;
 
-	username = malloc(lnmax);
+	username = (char*)malloc(lnmax);
 	if(username == NULL)
 		errExit("malloc");
 
