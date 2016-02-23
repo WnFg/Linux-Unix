@@ -6,12 +6,10 @@
 
 #define SG_SIZE (NGROUPS_MAX + 1)
 
-int main(int argc, char *argv[])
+int main(void)
 {
 	uid_t ruid, euid, suid, fsuid;
 	gid_t rgid, egid, sgid, fsgid;
-	gid_t suppGroups[SG_SIZE];
-	int numGroups, j;
 	char *p;
 
 	if(getresuid(&ruid, &euid, &suid) == -1)
