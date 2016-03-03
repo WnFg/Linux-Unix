@@ -1,17 +1,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "ugid_functions.h"
+#include <sys/socket.h>
+#include <sys/un.h>
+#include "tlpi_hdr.h"
+#include <signal.h>
+//#include <stddef.h>
+static void sigHandler(int sig)
+{
+	printf("Ouch!\n");
+}
 
-int main(int argc, char **argv)
-{	
-	if(argc == 1)
-		exit(-1);
-	int x = 0, t = 1;
-	int i;
-	for(i = strlen(argv[1]) - 1; i >=0; i--){
-		x += (argv[1][i] - '0')*t;
-		t *= 10;
+int main()
+{
+	int j;
+	if(signal(SIGINT, sigHandler) == SIG_ERR)
+		errExit("signal");
+
+	for(j = 0; ; j++){
+		printf("fdsf\n");
+		sleep(3);
 	}
-	printf("%s\n", userNameFromId(x));
 	return 0;
 }
